@@ -938,8 +938,8 @@ var actions = {
     newItem.title = title;
     newItem.id = ++_startIdx$1;
     newItem.isCompleted = false;
+    state.count = ++state.count;
     commit('createNew', newItem);
-    return context('onCreateNew', newItem);
   },
   removeItemById({ commit }, id) {
     commit('removeItemById', id);
@@ -989,7 +989,8 @@ var getters = {
 };
 
 var state = {
-  todoList: []
+  todoList: [],
+  count: 0
 };
 
 Vue.use(index_esm);
@@ -1025,7 +1026,7 @@ var Todo = { render: function () {
 	mounted() {
 		console.log(window);
 	},
-	computed: Object.assign({}, mapState(['todoList'])),
+	computed: Object.assign({}, mapState(['todoList', 'count'])),
 	methods: Object.assign({}, mapMutations(['createNew', 'removeItemById', 'toggleCompleted']), mapActions(['createNew', 'removeItemById'])),
 	proxys: {
 		onCreateNew({ resolve }, item) {

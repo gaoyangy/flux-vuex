@@ -1,3 +1,4 @@
 export default {
-  todoList: []
+  todoList: [],
+  count: 0
 }

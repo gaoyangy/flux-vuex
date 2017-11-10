@@ -5,6 +5,7 @@ export default {
     newItem.title = title
     newItem.id = ++_startIdx
     newItem.isCompleted = false
+    state.count=++state.count
     commit('createNew',newItem)
   },
   removeItemById({commit}, id) {
