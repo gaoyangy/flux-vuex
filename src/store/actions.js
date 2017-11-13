@@ -1,6 +1,6 @@
 let _startIdx = 0
 export default {
-  createNew ({dispatch,commit, state,context},title) {
+  createNew ({dispatch, commit, state},title) {
     let newItem = {}
     newItem.title = title
     newItem.id = ++_startIdx
@@ -8,7 +8,7 @@ export default {
     state.count=++state.count
     commit('createNew',newItem)
   },
-  removeItemById({commit,state}, id) {
+  removeItemById({commit, state}, id) {
     state.count=--state.count
     commit('removeItemById',id)
   }

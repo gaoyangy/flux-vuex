@@ -2,6 +2,69 @@ var app = (function (Vue,VueRouter) {
 Vue = 'default' in Vue ? Vue['default'] : Vue;
 VueRouter = 'default' in VueRouter ? VueRouter['default'] : VueRouter;
 
+let _startIdx$1 = 0;
+var actions = {
+  createNew({ dispatch, commit, state }, title) {
+    let newItem = {};
+    newItem.title = title;
+    newItem.id = ++_startIdx$1;
+    newItem.isCompleted = false;
+    state.count = ++state.count;
+    commit('createNew', newItem);
+  },
+  removeItemById({ commit, state }, id) {
+    state.count = --state.count;
+    commit('removeItemById', id);
+  }
+};
+
+var mutations = {
+  createNew(state, newItem) {
+    state.todoList.push(newItem);
+    return state.todoList;
+  },
+  toggleCompleted(state, todo) {
+    let todoList = state.todoList;
+    for (let i = 0, l = todoList.length; i < l; ++i) {
+      if (todoList[i].id == todo.id) {
+        let it = todoList[i];
+        if (it.isCompleted == todo.isCompleted) {
+          it.isCompleted = !todo.isCompleted;
+          return { todoList };
+        }
+      }
+    }
+  },
+  removeItemById(state, id) {
+    for (let i = state.todoList.length - 1; i >= 0; --i) {
+      if (state.todoList[i].id == id) {
+        state.todoList.splice(i, 1);
+        return state.todoList;
+      }
+    }
+  },
+  restoreItems(_, todoList) {
+    if (!Array.isArray(todoList)) {
+      todoList = [];
+    }
+    _startIdx = todoList.length;
+    return {
+      todoList
+    };
+  }
+};
+
+var getters = {
+  todoList: state => {
+    return state.todoList;
+  }
+};
+
+var state = {
+  todoList: [],
+  count: 0
+};
+
 /**
  * vuex v3.0.1
  * (c) 2017 Evan You
@@ -931,68 +994,6 @@ var index_esm = {
   createNamespacedHelpers: createNamespacedHelpers
 };
 
-let _startIdx$1 = 0;
-var actions = {
-  createNew({ dispatch, commit, state, context }, title) {
-    let newItem = {};
-    newItem.title = title;
-    newItem.id = ++_startIdx$1;
-    newItem.isCompleted = false;
-    state.count = ++state.count;
-    commit('createNew', newItem);
-  },
-  removeItemById({ commit }, id) {
-    commit('removeItemById', id);
-  }
-};
-
-var mutations = {
-  createNew(state, newItem) {
-    state.todoList.push(newItem);
-    return state.todoList;
-  },
-  toggleCompleted(state, todo) {
-    let todoList = state.todoList;
-    for (let i = 0, l = todoList.length; i < l; ++i) {
-      if (todoList[i].id == todo.id) {
-        let it = todoList[i];
-        if (it.isCompleted == todo.isCompleted) {
-          it.isCompleted = !todo.isCompleted;
-          return { todoList };
-        }
-      }
-    }
-  },
-  removeItemById(state, id) {
-    for (let i = state.todoList.length - 1; i >= 0; --i) {
-      if (state.todoList[i].id == id) {
-        state.todoList.splice(i, 1);
-        return state.todoList;
-      }
-    }
-  },
-  restoreItems(_, todoList) {
-    if (!Array.isArray(todoList)) {
-      todoList = [];
-    }
-    _startIdx = todoList.length;
-    return {
-      todoList
-    };
-  }
-};
-
-var getters = {
-  todoList: state => {
-    return state.todoList;
-  }
-};
-
-var state = {
-  todoList: [],
-  count: 0
-};
-
 Vue.use(index_esm);
 
 var store = new index_esm.Store({
@@ -1045,11 +1046,6 @@ var routerMap = [{
   path: "/",
   component: Todo
 }];
-
-// import actions from './store/actions'
-// import mutations from './store/mutations'
-// import getters from './store/getters'
-// import state from './store/state'
 
 Vue.use(VueRouter);
 
