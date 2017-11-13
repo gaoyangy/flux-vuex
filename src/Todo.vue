@@ -18,8 +18,7 @@ import {mapState, mapMutations, mapActions} from 'vuex'
 export default {
 		data () {
 			return {
-				newText: '',
-				count: 0
+				newText: ''
 			}
 		},
 		mounted(){

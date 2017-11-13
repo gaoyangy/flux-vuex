@@ -1004,24 +1004,23 @@ var store = new index_esm.Store({
 });
 
 var Todo = { render: function () {
-		var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _h('div', { staticClass: "todolist" }, [_h('h4', ["TODO LIST", _h('i', ["(sum: " + _vm._s(_vm.count) + ")"])]), " ", _h('ul', [_vm._l(_vm.todoList, function (child) {
-			return _h('li', [_h('label', [_h('input', { attrs: { "type": "checkbox" }, domProps: { "checked": child.isCompleted }, on: { "change": function ($event) {
+		var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('div', { staticClass: "todolist" }, [_c('h4', [_vm._v("TODO LIST"), _c('i', [_vm._v("(sum: " + _vm._s(_vm.count) + ")")])]), _vm._v(" "), _c('ul', _vm._l(_vm.todoList, function (child) {
+			return _c('li', [_c('label', [_c('input', { attrs: { "type": "checkbox" }, domProps: { "checked": child.isCompleted }, on: { "change": function ($event) {
 						_vm.toggleCompleted(child);
-					} } }), " ", _h('span', [_vm._s(child.title)])]), " ", _h('button', { on: { "click": function ($event) {
+					} } }), _vm._v(" "), _c('span', [_vm._v(_vm._s(child.title))])]), _vm._v(" "), _c('button', { on: { "click": function ($event) {
 						_vm.removeItemById(child.id);
-					} } }, ["x"])]);
-		})]), " ", _h('input', { directives: [{ name: "model", rawName: "v-model", value: _vm.newText, expression: "newText" }], attrs: { "type": "text" }, domProps: { "value": _vm._s(_vm.newText) }, on: { "input": function ($event) {
+					} } }, [_vm._v("x")])]);
+		})), _vm._v(" "), _c('input', { directives: [{ name: "model", rawName: "v-model", value: _vm.newText, expression: "newText" }], attrs: { "type": "text" }, domProps: { "value": _vm.newText }, on: { "input": function ($event) {
 					if ($event.target.composing) {
 						return;
 					}_vm.newText = $event.target.value;
-				} } }), " ", _h('button', { on: { "click": function ($event) {
+				} } }), _vm._v(" "), _c('button', { on: { "click": function ($event) {
 					_vm.createNew(_vm.newText);
-				} } }, ["Add"])]);
+				} } }, [_vm._v("Add")])]);
 	}, staticRenderFns: [],
 	data() {
 		return {
-			newText: '',
-			count: 0
+			newText: ''
 		};
 	},
 	mounted() {
@@ -1046,11 +1045,6 @@ var routerMap = [{
   path: "/",
   component: Todo
 }];
-
-// import actions from './store/actions'
-// import mutations from './store/mutations'
-// import getters from './store/getters'
-// import state from './store/state'
 
 Vue.use(VueRouter);
 
