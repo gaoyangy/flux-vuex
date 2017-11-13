@@ -1047,6 +1047,11 @@ var routerMap = [{
   component: Todo
 }];
 
+// import actions from './store/actions'
+// import mutations from './store/mutations'
+// import getters from './store/getters'
+// import state from './store/state'
+
 Vue.use(VueRouter);
 
 let router = new VueRouter({
