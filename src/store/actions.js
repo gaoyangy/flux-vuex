@@ -8,7 +8,8 @@ export default {
     state.count=++state.count
     commit('createNew',newItem)
   },
-  removeItemById({commit}, id) {
+  removeItemById({commit,state}, id) {
+    state.count=--state.count
     commit('removeItemById',id)
   }
 }

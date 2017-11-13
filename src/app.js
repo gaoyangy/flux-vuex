@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Vuex from 'vuex'
 import store from './store/todo'
 import routerMap from './router/router'
 import App from './Todo.vue'
