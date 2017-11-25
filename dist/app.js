@@ -1016,12 +1016,17 @@ var Todo = { render: function () {
 					}_vm.newText = $event.target.value;
 				} } }), _vm._v(" "), _c('button', { on: { "click": function ($event) {
 					_vm.createNew(_vm.newText);
-				} } }, [_vm._v("Add")])]);
+				} } }, [_vm._v("Add")]), _vm._v(" "), _c('tables')], 1);
 	}, staticRenderFns: [],
 	data() {
 		return {
 			newText: ''
 		};
+	},
+	components: {
+		tables: {
+			template: "<div>111111111</div>"
+		}
 	},
 	mounted() {
 		console.log(window);
@@ -7835,10 +7840,6 @@ define(String.prototype, "padRight", "".padEnd);
   [][key] && define(Array, key, Function.call.bind([][key]));
 });
 
-// import actions from './store/actions'
-// import mutations from './store/mutations'
-// import getters from './store/getters'
-// import state from './store/state'
 Vue.config.devtools = true;
 Vue.use(VueRouter);
 

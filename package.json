@@ -19,6 +19,7 @@
     "rollup-plugin-vue": "^2.4.2"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "rollup-plugin-replace": "^2.0.0",
     "rollup-watch": "^4.3.1",
     "vue": "^2.5.3",

@@ -11,14 +11,21 @@
 			</li>
 		</ul>
 		<input type="text" v-model="newText"/> <button @click="createNew(newText)">Add</button>
+		<tables></tables>
 	</div>
 </template>
 <script type="text/javascript">
 import {mapState, mapMutations, mapActions} from 'vuex'
+import tables from './component/Table.vue'
 export default {
 		data () {
 			return {
 				newText: ''
+			}
+		},
+		components:{
+			tables:{
+				template:"<div>111111111</div>"
 			}
 		},
 		mounted(){
